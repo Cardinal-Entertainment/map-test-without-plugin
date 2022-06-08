@@ -14,6 +14,13 @@ export class Map extends Phaser.Scene {
         this.player = this.physics.add.sprite(0, 0, 'atlasCrusader');
         this.player.walkSpeed = 800;
         this.initCamera();
+
+        // The offset used for getTileatWorldXY()
+        this.inputOffsetX = 512;
+        this.inputOffsetY = 512;
+
+        // currently selected tile. 
+        this.currentSelectedTile = null;
     }
 
     initMap() {
@@ -31,7 +38,7 @@ export class Map extends Phaser.Scene {
 
     initCamera() {
         // set up the camera
-        this.cameras.main.setZoom(0.5);
+        this.cameras.main.setZoom(1);
         this.input.on('wheel', function (pointer, gameObjects, deltaX, deltaY, deltaZ) {
             this.cameras.main.zoom -= deltaY * 0.001;
             this.cameras.main.zoom = Math.min(this.cameras.main.zoom, 2);
@@ -51,14 +58,13 @@ export class Map extends Phaser.Scene {
     update(time, delta) {
 
         this.showMousePos();
-
-
         this.player.body.velocity.setTo(0, 0, 0);
+
         // Horizontal movement
         if (this.cursors.left.isDown) {
             //this.cameras.main.scrollX -= 50;
             this.player.body.velocity.setTo(-1 * this.player.walkSpeed, 0, 0);
-            this.player.anims.play('walk3', true);
+            this.player.anims.play('walk3', true);     
         }
         else if (this.cursors.right.isDown) {
             //this.cameras.main.scrollX += 50;
@@ -77,5 +83,18 @@ export class Map extends Phaser.Scene {
             this.player.body.velocity.setTo(0, this.player.walkSpeed, 0);
             this.player.anims.play('walk4', true);
         }
+
+        // get current selected tile
+        if (this.currentSelectedTile !== null) this.currentSelectedTile.tint = 0xffffff;
+
+        let pos = this.cameras.main.getWorldPoint(this.input.x, this.input.y);
+        pos.x -= this.inputOffsetX;
+        pos.y -= this.inputOffsetY;
+        let tile = this.layer1.getTileAtWorldXY(pos.x, pos.y);
+        if (tile !== null) {
+            this.currentSelectedTile = tile;
+            tile.tint = (0x86bfda);
+        }
+
     }
 }
