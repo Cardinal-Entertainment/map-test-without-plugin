@@ -1,0 +1,1280 @@
+{
+	"textures": [
+		{
+			"image": "crusader.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 974,
+				"h": 944
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "walk/crusader_walk_10000.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 120,
+						"y": 23,
+						"w": 84,
+						"h": 158
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 84,
+						"h": 158
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_10001.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 116,
+						"y": 24,
+						"w": 87,
+						"h": 157
+					},
+					"frame": {
+						"x": 87,
+						"y": 1,
+						"w": 87,
+						"h": 157
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_10002.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 113,
+						"y": 24,
+						"w": 88,
+						"h": 155
+					},
+					"frame": {
+						"x": 176,
+						"y": 1,
+						"w": 88,
+						"h": 155
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_10003.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 114,
+						"y": 25,
+						"w": 87,
+						"h": 155
+					},
+					"frame": {
+						"x": 266,
+						"y": 1,
+						"w": 87,
+						"h": 155
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_10004.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 117,
+						"y": 24,
+						"w": 85,
+						"h": 160
+					},
+					"frame": {
+						"x": 355,
+						"y": 1,
+						"w": 85,
+						"h": 160
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_10005.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 120,
+						"y": 24,
+						"w": 83,
+						"h": 159
+					},
+					"frame": {
+						"x": 442,
+						"y": 1,
+						"w": 83,
+						"h": 159
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_10006.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 120,
+						"y": 23,
+						"w": 84,
+						"h": 159
+					},
+					"frame": {
+						"x": 527,
+						"y": 1,
+						"w": 84,
+						"h": 159
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_10007.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 120,
+						"y": 23,
+						"w": 84,
+						"h": 157
+					},
+					"frame": {
+						"x": 613,
+						"y": 1,
+						"w": 84,
+						"h": 157
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_10008.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 120,
+						"y": 24,
+						"w": 83,
+						"h": 156
+					},
+					"frame": {
+						"x": 699,
+						"y": 1,
+						"w": 83,
+						"h": 156
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_10009.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 120,
+						"y": 24,
+						"w": 82,
+						"h": 155
+					},
+					"frame": {
+						"x": 784,
+						"y": 1,
+						"w": 82,
+						"h": 155
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_10010.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 121,
+						"y": 25,
+						"w": 81,
+						"h": 153
+					},
+					"frame": {
+						"x": 868,
+						"y": 1,
+						"w": 81,
+						"h": 153
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_10011.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 120,
+						"y": 26,
+						"w": 82,
+						"h": 150
+					},
+					"frame": {
+						"x": 1,
+						"y": 163,
+						"w": 82,
+						"h": 150
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_10012.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 121,
+						"y": 25,
+						"w": 83,
+						"h": 152
+					},
+					"frame": {
+						"x": 85,
+						"y": 163,
+						"w": 83,
+						"h": 152
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_10013.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 122,
+						"y": 24,
+						"w": 83,
+						"h": 154
+					},
+					"frame": {
+						"x": 170,
+						"y": 163,
+						"w": 83,
+						"h": 154
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_10014.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 122,
+						"y": 24,
+						"w": 83,
+						"h": 156
+					},
+					"frame": {
+						"x": 255,
+						"y": 163,
+						"w": 83,
+						"h": 156
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_30000.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 114,
+						"y": 25,
+						"w": 99,
+						"h": 147
+					},
+					"frame": {
+						"x": 340,
+						"y": 163,
+						"w": 99,
+						"h": 147
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_30001.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 119,
+						"y": 25,
+						"w": 91,
+						"h": 146
+					},
+					"frame": {
+						"x": 441,
+						"y": 163,
+						"w": 91,
+						"h": 146
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_30002.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 120,
+						"y": 26,
+						"w": 88,
+						"h": 141
+					},
+					"frame": {
+						"x": 534,
+						"y": 163,
+						"w": 88,
+						"h": 141
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_30003.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 120,
+						"y": 26,
+						"w": 89,
+						"h": 142
+					},
+					"frame": {
+						"x": 624,
+						"y": 163,
+						"w": 89,
+						"h": 142
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_30004.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 118,
+						"y": 26,
+						"w": 94,
+						"h": 142
+					},
+					"frame": {
+						"x": 715,
+						"y": 163,
+						"w": 94,
+						"h": 142
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_30005.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 113,
+						"y": 25,
+						"w": 102,
+						"h": 145
+					},
+					"frame": {
+						"x": 811,
+						"y": 163,
+						"w": 102,
+						"h": 145
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_30006.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 109,
+						"y": 25,
+						"w": 106,
+						"h": 146
+					},
+					"frame": {
+						"x": 1,
+						"y": 321,
+						"w": 106,
+						"h": 146
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_30007.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 105,
+						"y": 25,
+						"w": 109,
+						"h": 148
+					},
+					"frame": {
+						"x": 109,
+						"y": 321,
+						"w": 109,
+						"h": 148
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_30008.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 103,
+						"y": 25,
+						"w": 108,
+						"h": 149
+					},
+					"frame": {
+						"x": 220,
+						"y": 321,
+						"w": 108,
+						"h": 149
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_30009.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 102,
+						"y": 26,
+						"w": 105,
+						"h": 150
+					},
+					"frame": {
+						"x": 330,
+						"y": 321,
+						"w": 105,
+						"h": 150
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_30010.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 101,
+						"y": 27,
+						"w": 105,
+						"h": 149
+					},
+					"frame": {
+						"x": 437,
+						"y": 321,
+						"w": 105,
+						"h": 149
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_30011.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 101,
+						"y": 27,
+						"w": 106,
+						"h": 148
+					},
+					"frame": {
+						"x": 544,
+						"y": 321,
+						"w": 106,
+						"h": 148
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_30012.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 103,
+						"y": 27,
+						"w": 108,
+						"h": 147
+					},
+					"frame": {
+						"x": 652,
+						"y": 321,
+						"w": 108,
+						"h": 147
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_30013.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 107,
+						"y": 26,
+						"w": 107,
+						"h": 148
+					},
+					"frame": {
+						"x": 762,
+						"y": 321,
+						"w": 107,
+						"h": 148
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_30014.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 112,
+						"y": 25,
+						"w": 102,
+						"h": 148
+					},
+					"frame": {
+						"x": 871,
+						"y": 321,
+						"w": 102,
+						"h": 148
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_50000.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 94,
+						"y": 26,
+						"w": 84,
+						"h": 148
+					},
+					"frame": {
+						"x": 1,
+						"y": 473,
+						"w": 84,
+						"h": 148
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_50001.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 95,
+						"y": 26,
+						"w": 87,
+						"h": 149
+					},
+					"frame": {
+						"x": 87,
+						"y": 473,
+						"w": 87,
+						"h": 149
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_50002.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 97,
+						"y": 26,
+						"w": 88,
+						"h": 150
+					},
+					"frame": {
+						"x": 176,
+						"y": 473,
+						"w": 88,
+						"h": 150
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_50003.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 97,
+						"y": 26,
+						"w": 87,
+						"h": 149
+					},
+					"frame": {
+						"x": 266,
+						"y": 473,
+						"w": 87,
+						"h": 149
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_50004.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 96,
+						"y": 26,
+						"w": 85,
+						"h": 147
+					},
+					"frame": {
+						"x": 355,
+						"y": 473,
+						"w": 85,
+						"h": 147
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_50005.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 95,
+						"y": 25,
+						"w": 83,
+						"h": 147
+					},
+					"frame": {
+						"x": 442,
+						"y": 473,
+						"w": 83,
+						"h": 147
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_50006.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 94,
+						"y": 24,
+						"w": 84,
+						"h": 147
+					},
+					"frame": {
+						"x": 527,
+						"y": 473,
+						"w": 84,
+						"h": 147
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_50007.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 94,
+						"y": 24,
+						"w": 84,
+						"h": 146
+					},
+					"frame": {
+						"x": 613,
+						"y": 473,
+						"w": 84,
+						"h": 146
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_50008.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 95,
+						"y": 25,
+						"w": 83,
+						"h": 143
+					},
+					"frame": {
+						"x": 699,
+						"y": 473,
+						"w": 83,
+						"h": 143
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_50009.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 96,
+						"y": 25,
+						"w": 82,
+						"h": 143
+					},
+					"frame": {
+						"x": 784,
+						"y": 473,
+						"w": 82,
+						"h": 143
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_50010.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 96,
+						"y": 26,
+						"w": 81,
+						"h": 143
+					},
+					"frame": {
+						"x": 868,
+						"y": 473,
+						"w": 81,
+						"h": 143
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_50011.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 96,
+						"y": 27,
+						"w": 82,
+						"h": 143
+					},
+					"frame": {
+						"x": 1,
+						"y": 625,
+						"w": 82,
+						"h": 143
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_50012.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 94,
+						"y": 27,
+						"w": 83,
+						"h": 144
+					},
+					"frame": {
+						"x": 85,
+						"y": 625,
+						"w": 83,
+						"h": 144
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_50013.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 93,
+						"y": 26,
+						"w": 83,
+						"h": 146
+					},
+					"frame": {
+						"x": 170,
+						"y": 625,
+						"w": 83,
+						"h": 146
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_50014.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 93,
+						"y": 26,
+						"w": 83,
+						"h": 147
+					},
+					"frame": {
+						"x": 255,
+						"y": 625,
+						"w": 83,
+						"h": 147
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_70000.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 85,
+						"y": 24,
+						"w": 99,
+						"h": 157
+					},
+					"frame": {
+						"x": 340,
+						"y": 625,
+						"w": 99,
+						"h": 157
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_70001.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 88,
+						"y": 25,
+						"w": 91,
+						"h": 154
+					},
+					"frame": {
+						"x": 441,
+						"y": 625,
+						"w": 91,
+						"h": 154
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_70002.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 90,
+						"y": 25,
+						"w": 88,
+						"h": 153
+					},
+					"frame": {
+						"x": 534,
+						"y": 625,
+						"w": 88,
+						"h": 153
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_70003.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 89,
+						"y": 25,
+						"w": 89,
+						"h": 152
+					},
+					"frame": {
+						"x": 624,
+						"y": 625,
+						"w": 89,
+						"h": 152
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_70004.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 86,
+						"y": 24,
+						"w": 94,
+						"h": 152
+					},
+					"frame": {
+						"x": 715,
+						"y": 625,
+						"w": 94,
+						"h": 152
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_70005.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 83,
+						"y": 23,
+						"w": 102,
+						"h": 154
+					},
+					"frame": {
+						"x": 811,
+						"y": 625,
+						"w": 102,
+						"h": 154
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_70006.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 83,
+						"y": 23,
+						"w": 106,
+						"h": 156
+					},
+					"frame": {
+						"x": 1,
+						"y": 784,
+						"w": 106,
+						"h": 156
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_70007.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 84,
+						"y": 22,
+						"w": 109,
+						"h": 159
+					},
+					"frame": {
+						"x": 109,
+						"y": 784,
+						"w": 109,
+						"h": 159
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_70008.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 87,
+						"y": 23,
+						"w": 108,
+						"h": 158
+					},
+					"frame": {
+						"x": 220,
+						"y": 784,
+						"w": 108,
+						"h": 158
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_70009.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 91,
+						"y": 24,
+						"w": 105,
+						"h": 156
+					},
+					"frame": {
+						"x": 330,
+						"y": 784,
+						"w": 105,
+						"h": 156
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_70010.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 92,
+						"y": 25,
+						"w": 105,
+						"h": 154
+					},
+					"frame": {
+						"x": 437,
+						"y": 784,
+						"w": 105,
+						"h": 154
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_70011.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 91,
+						"y": 26,
+						"w": 106,
+						"h": 158
+					},
+					"frame": {
+						"x": 544,
+						"y": 784,
+						"w": 106,
+						"h": 158
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_70012.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 87,
+						"y": 26,
+						"w": 108,
+						"h": 159
+					},
+					"frame": {
+						"x": 652,
+						"y": 784,
+						"w": 108,
+						"h": 159
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_70013.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 84,
+						"y": 25,
+						"w": 107,
+						"h": 159
+					},
+					"frame": {
+						"x": 762,
+						"y": 784,
+						"w": 107,
+						"h": 159
+					}
+				},
+				{
+					"filename": "walk/crusader_walk_70014.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 299,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 84,
+						"y": 24,
+						"w": 102,
+						"h": 158
+					},
+					"frame": {
+						"x": 871,
+						"y": 784,
+						"w": 102,
+						"h": 158
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:c09cfa6eeebb34c2b115d7db4225be85:341c1dcf790fa32c7b7c2e14c362e967:b98a3ba2ce931c0753bc56b7ee904f1e$"
+	}
+}
