@@ -56,7 +56,6 @@ export class Map extends Phaser.Scene {
     }
 
     update(time, delta) {
-
         this.showMousePos();
         this.player.body.velocity.setTo(0, 0, 0);
 
@@ -83,18 +82,24 @@ export class Map extends Phaser.Scene {
             this.player.body.velocity.setTo(0, this.player.walkSpeed, 0);
             this.player.anims.play('walk4', true);
         }
+        this.checkInputForSelectedTile();
+        console.log(this.currentSelectedTile);
+    }
+    checkInputForSelectedTile() {
+        // reset selected tile 
+        if (this.currentSelectedTile !== null) {
+            this.currentSelectedTile.tint = 0xffffff;
+            this.currentSelectedTile = null;
+        }
 
-        // get current selected tile
-        if (this.currentSelectedTile !== null) this.currentSelectedTile.tint = 0xffffff;
-
+        // poll input for selected tile
         let pos = this.cameras.main.getWorldPoint(this.input.x, this.input.y);
         pos.x -= this.inputOffsetX;
         pos.y -= this.inputOffsetY;
         let tile = this.layer1.getTileAtWorldXY(pos.x, pos.y);
         if (tile !== null) {
             this.currentSelectedTile = tile;
-            tile.tint = (0x86bfda);
+            this.currentSelectedTile.tint = (0x86bfda);
         }
-
     }
 }
