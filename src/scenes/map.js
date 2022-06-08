@@ -21,6 +21,8 @@ export class Map extends Phaser.Scene {
 
         // currently selected tile. 
         this.currentSelectedTile = null;
+
+        this.input.on('pointerdown', ()=>{if (this.currentSelectedTile !== null) {this.currentSelectedTile.index = 14;}}, this);
     }
 
     initMap() {
@@ -59,27 +61,30 @@ export class Map extends Phaser.Scene {
         this.showMousePos();
         this.player.body.velocity.setTo(0, 0, 0);
 
+
+        let sp = Math.sqrt(Math.pow(this.player.walkSpeed, 2) / 5);
+
         // Horizontal movement
         if (this.cursors.left.isDown) {
             //this.cameras.main.scrollX -= 50;
-            this.player.body.velocity.setTo(-1 * this.player.walkSpeed, 0, 0);
+            this.player.body.velocity.setTo(-2 * sp, -sp, 0);
             this.player.anims.play('walk3', true);     
         }
         else if (this.cursors.right.isDown) {
             //this.cameras.main.scrollX += 50;
-            this.player.body.velocity.setTo(this.player.walkSpeed, 0, 0);
+            this.player.body.velocity.setTo(2 * sp, sp, 0);
             this.player.anims.play('walk1', true);
         }
 
         // Vertical movement
         else if (this.cursors.up.isDown) {
             //this.cameras.main.scrollY -= 50;
-            this.player.body.velocity.setTo(0, -this.player.walkSpeed, 0);
+            this.player.body.velocity.setTo(2 * sp, -1 * sp, 0);
             this.player.anims.play('walk2', true);
         }
         else if (this.cursors.down.isDown) {
             //this.cameras.main.scrollY += 50;
-            this.player.body.velocity.setTo(0, this.player.walkSpeed, 0);
+            this.player.body.velocity.setTo(-2 * sp, sp, 0);
             this.player.anims.play('walk4', true);
         }
         this.checkInputForSelectedTile();
