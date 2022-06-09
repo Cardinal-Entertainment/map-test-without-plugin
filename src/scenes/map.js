@@ -48,15 +48,19 @@ export class Map extends Phaser.Scene {
 
         // load a sample map (collision works here)
         
+        
         // add the tilemap and layer
+        /*
         this._mp = this.add.tilemap('sampleTilemap');
         this._ts = this._mp.addTilesetImage('tileset', 'sampleTileset');
         this._ly = this._mp.createLayer('Tile Layer 1', this._ts);
         
         // all tiles that have collides property set to true will be 
         this._ly.setCollisionByProperty({collides: true});
+
+        // add the matter bodies for collision tiles (this doesn't work for isometric maps at the moment)
         this.matter.world.convertTilemapLayer(this._ly);
-        
+        */
 
         
     }
