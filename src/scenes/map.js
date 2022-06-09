@@ -25,7 +25,7 @@ export class Map extends Phaser.Scene {
         this.currentSelectedTile = null;
 
 
-        let x1 = 
+        
 
         this.testrect = this.matter.add.trapezoid(0, 0, 300, 200, 1, {
             isStatic: true, 
