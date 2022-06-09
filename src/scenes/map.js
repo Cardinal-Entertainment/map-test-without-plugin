@@ -11,8 +11,10 @@ export class Map extends Phaser.Scene {
         this.initMap();
         this.initUI();
 
-        this.player = this.physics.add.sprite(0, 0, 'atlasCrusader');
-        this.player.walkSpeed = 800;
+        this.player = this.matter.add.sprite(0, 0, 'atlasCrusader', null);
+        this.player.setBody({type:'circle',radius:43})
+        this.player.walkSpeed = 10;
+
         this.initCamera();
 
         // The offset used for getTileatWorldXY()
@@ -22,14 +24,41 @@ export class Map extends Phaser.Scene {
         // currently selected tile. 
         this.currentSelectedTile = null;
 
-        this.input.on('pointerdown', ()=>{if (this.currentSelectedTile !== null) {this.currentSelectedTile.index = 14;}}, this);
+
+        let x1 = 
+
+        this.testrect = this.matter.add.trapezoid(0, 0, 300, 200, 1, {
+            isStatic: true, 
+            angle: 0.46,
+        });
+
+        this.testrect = this.matter.add.trapezoid(0, 0, 300, 200, 1, {
+            isStatic: true, 
+            
+        });
     }
 
     initMap() {
         this.map = this.add.tilemap('tilemap');
         this.tileset = this.map.addTilesetImage('from_tp0', 'tiles');
-
         this.layer1 = this.map.createLayer('Tile Layer 1', this.tileset);
+
+        this.layer1.setCollisionByProperty({collides: true});
+        this.matter.world.convertTilemapLayer(this.layer1);
+
+        // load a sample map (collision works here)
+        
+        // add the tilemap and layer
+        this._mp = this.add.tilemap('sampleTilemap');
+        this._ts = this._mp.addTilesetImage('tileset', 'sampleTileset');
+        this._ly = this._mp.createLayer('Tile Layer 1', this._ts);
+        
+        // all tiles that have collides property set to true will be 
+        this._ly.setCollisionByProperty({collides: true});
+        this.matter.world.convertTilemapLayer(this._ly);
+        
+
+        
     }
     initUI() {
         // get references to the GUI elements
@@ -47,7 +76,7 @@ export class Map extends Phaser.Scene {
             this.cameras.main.zoom = Math.max(this.cameras.main.zoom, 0.125);
         }, this);
 
-        this.cameras.main.startFollow(this.player);
+        this.cameras.main.startFollow(this.player, true);
     }
 
     showMousePos() {
@@ -59,36 +88,38 @@ export class Map extends Phaser.Scene {
 
     update(time, delta) {
         this.showMousePos();
-        this.player.body.velocity.setTo(0, 0, 0);
+        this.player.setVelocity(0, 0);
 
 
         let sp = Math.sqrt(Math.pow(this.player.walkSpeed, 2) / 5);
 
         // Horizontal movement
         if (this.cursors.left.isDown) {
-            //this.cameras.main.scrollX -= 50;
-            this.player.body.velocity.setTo(-2 * sp, -sp, 0);
+            this.player.setVelocity(-2 * sp, -sp);
             this.player.anims.play('walk3', true);     
         }
         else if (this.cursors.right.isDown) {
-            //this.cameras.main.scrollX += 50;
-            this.player.body.velocity.setTo(2 * sp, sp, 0);
+            this.player.setVelocity(2 * sp, sp);
             this.player.anims.play('walk1', true);
         }
 
         // Vertical movement
         else if (this.cursors.up.isDown) {
-            //this.cameras.main.scrollY -= 50;
-            this.player.body.velocity.setTo(2 * sp, -1 * sp, 0);
+            this.player.setVelocity(2 * sp, -1 * sp);
             this.player.anims.play('walk2', true);
         }
         else if (this.cursors.down.isDown) {
-            //this.cameras.main.scrollY += 50;
-            this.player.body.velocity.setTo(-2 * sp, sp, 0);
+            this.player.setVelocity(-2 * sp, sp);
             this.player.anims.play('walk4', true);
         }
+        else {
+            this.player.anims.restart();
+            this.player.anims.stop();
+        }
+
         this.checkInputForSelectedTile();
-        console.log(this.currentSelectedTile);
+
+        this.player.angle = 0;
     }
     checkInputForSelectedTile() {
         // reset selected tile 

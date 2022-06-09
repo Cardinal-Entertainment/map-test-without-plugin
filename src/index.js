@@ -8,7 +8,13 @@ var config = {
     width: 1920,
     height: 1080,
     physics: {
-        default: 'arcade',
+        default: 'matter',
+        matter: {
+            gravity: {
+                y: 0
+            },
+            debug: true,
+        }
     }, 
     scale: {
         mode: Phaser.Scale.FIT,
