@@ -5,13 +5,15 @@ export class Map extends Phaser.Scene {
         });
     }
     create(data) {
+        // width of a single isometric tile.
+        this.TILEWIDTH = 1024;
 
-        
-        // The offset used for getTileatWorldXY()
-        this.inputOffsetX = 512;
-        this.inputOffsetY = 512;
-        // points used for the rhombus collision body for tilemap collisions
-        this.POINTS = '0 0 512 -256 1024 0 512 256'
+        // the offset that the tilemap is rendered at. Ensure this value is set to the correct value.
+        this.OFFSET_X = 512;
+        this.OFFSET_Y = 512;
+
+        // points used for the rhombus collision body for tilemap collisions.
+        this.POINTS = '0 0 ' + (this.TILEWIDTH/2) + ' -' + (this.TILEWIDTH/4) + ' ' + this.TILEWIDTH + ' 0 ' + (this.TILEWIDTH/2) + ' ' + (this.TILEWIDTH/4);
 
         this.input.setPollAlways();
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -33,15 +35,18 @@ export class Map extends Phaser.Scene {
     }
 
     initMap() {
-        
+        // add the tilemap and layer
         this.map = this.add.tilemap('tilemap');
         this.tileset = this.map.addTilesetImage('from_tp0', 'tiles');
         this.layer1 = this.map.createLayer('Tile Layer 1', this.tileset);
 
-        this.layer1.setCollisionByProperty({collides: true});
+        // add the collision tiles
 
+        //this.layer1.setCollisionByProperty({collides: true});
+        //this.layer1.setCollisionBetween(16, 16);
+
+        // add the matter tile bodies
         this.convertTilemapLayer(this.layer1);
-        
     }
     initUI() {
         // get references to the GUI elements
@@ -122,31 +127,25 @@ export class Map extends Phaser.Scene {
         }
     }
 
-    // convert a tile x and y to the world x y.
-    // this function is used to generate the rhombus collision bodies
+    // convert a tile's coordinates to the world coordinates.
+    // the coordinate returned will be the CENTER of the isometric tile
     worldXY(tileXY) {
-        let xx = (512*tileXY.x) - (512*tileXY.y) + this.inputOffsetX;
-        let yy = (256*tileXY.x) + (256*tileXY.y) + 256 + this.inputOffsetY;
+        let xx = ((this.TILEWIDTH/2)*tileXY.x) - ((this.TILEWIDTH/2)*tileXY.y) + this.OFFSET_X;
+        let yy = ((this.TILEWIDTH/4)*tileXY.x) + ((this.TILEWIDTH/4)*tileXY.y) + (this.TILEWIDTH/4) + this.OFFSET_Y;
 
         return {x: xx, y: yy};
     }
+
     // generate collision bodies for a given tilemap layer
     convertTilemapLayer(tilemapLayer) {
         let layerData = tilemapLayer.layer; 
-
         let tiles = tilemapLayer.getTilesWithin(0, 0, layerData.width, layerData.height, { isColliding: true });
 
-        
         for (let i = 0; i < tiles.length; i++) {
             let pt = this.worldXY({x: tiles[i].x, y: tiles[i].y});
-            console.log(pt);
-            
             let poly = this.add.polygon(pt.x, pt.y, this.POINTS, undefined, 0);
             
             this.matter.add.gameObject(poly, {shape: { type: 'fromVerts', verts: this.POINTS, flagInternal: true }}).setStatic(true);
-            
         } 
     }
-
-    
 }
