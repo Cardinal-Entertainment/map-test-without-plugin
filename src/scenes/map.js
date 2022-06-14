@@ -43,7 +43,7 @@ export class Map extends Phaser.Scene {
         // add the collision tiles
 
         //this.layer1.setCollisionByProperty({collides: true});
-        //this.layer1.setCollisionBetween(16, 16);
+        this.layer1.setCollisionBetween(1, 16);
 
         // add the matter tile bodies
         this.convertTilemapLayer(this.layer1);
