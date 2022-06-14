@@ -5,6 +5,14 @@ export class Map extends Phaser.Scene {
         });
     }
     create(data) {
+
+        
+        // The offset used for getTileatWorldXY()
+        this.inputOffsetX = 512;
+        this.inputOffsetY = 512;
+        // points used for the rhombus collision body for tilemap collisions
+        this.POINTS = '0 0 512 -256 1024 0 512 256'
+
         this.input.setPollAlways();
         this.cursors = this.input.keyboard.createCursorKeys();
 
@@ -17,51 +25,22 @@ export class Map extends Phaser.Scene {
 
         this.initCamera();
 
-        // The offset used for getTileatWorldXY()
-        this.inputOffsetX = 512;
-        this.inputOffsetY = 512;
+        
 
         // currently selected tile. 
         this.currentSelectedTile = null;
-
-
-        let x1 = 
-
-        this.testrect = this.matter.add.trapezoid(0, 0, 300, 200, 1, {
-            isStatic: true, 
-            angle: 0.46,
-        });
-
-        this.testrect = this.matter.add.trapezoid(0, 0, 300, 200, 1, {
-            isStatic: true, 
-            
-        });
+        
     }
 
     initMap() {
+        
         this.map = this.add.tilemap('tilemap');
         this.tileset = this.map.addTilesetImage('from_tp0', 'tiles');
         this.layer1 = this.map.createLayer('Tile Layer 1', this.tileset);
 
         this.layer1.setCollisionByProperty({collides: true});
-        this.matter.world.convertTilemapLayer(this.layer1);
 
-        // load a sample map (collision works here)
-        
-        
-        // add the tilemap and layer
-        /*
-        this._mp = this.add.tilemap('sampleTilemap');
-        this._ts = this._mp.addTilesetImage('tileset', 'sampleTileset');
-        this._ly = this._mp.createLayer('Tile Layer 1', this._ts);
-        
-        // all tiles that have collides property set to true will be 
-        this._ly.setCollisionByProperty({collides: true});
-
-        // add the matter bodies for collision tiles (this doesn't work for isometric maps at the moment)
-        this.matter.world.convertTilemapLayer(this._ly);
-        */
-
+        this.convertTilemapLayer(this.layer1);
         
     }
     initUI() {
@@ -122,7 +101,7 @@ export class Map extends Phaser.Scene {
         }
 
         this.checkInputForSelectedTile();
-
+        //console.log(this.currentSelectedTile);
         this.player.angle = 0;
     }
     checkInputForSelectedTile() {
@@ -142,4 +121,32 @@ export class Map extends Phaser.Scene {
             this.currentSelectedTile.tint = (0x86bfda);
         }
     }
+
+    // convert a tile x and y to the world x y.
+    // this function is used to generate the rhombus collision bodies
+    worldXY(tileXY) {
+        let xx = (512*tileXY.x) - (512*tileXY.y) + this.inputOffsetX;
+        let yy = (256*tileXY.x) + (256*tileXY.y) + 256 + this.inputOffsetY;
+
+        return {x: xx, y: yy};
+    }
+    // generate collision bodies for a given tilemap layer
+    convertTilemapLayer(tilemapLayer) {
+        let layerData = tilemapLayer.layer; 
+
+        let tiles = tilemapLayer.getTilesWithin(0, 0, layerData.width, layerData.height, { isColliding: true });
+
+        
+        for (let i = 0; i < tiles.length; i++) {
+            let pt = this.worldXY({x: tiles[i].x, y: tiles[i].y});
+            console.log(pt);
+            
+            let poly = this.add.polygon(pt.x, pt.y, this.POINTS, undefined, 0);
+            
+            this.matter.add.gameObject(poly, {shape: { type: 'fromVerts', verts: this.POINTS, flagInternal: true }}).setStatic(true);
+            
+        } 
+    }
+
+    
 }

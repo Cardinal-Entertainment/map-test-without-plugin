@@ -225,7 +225,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }, 
                         {
                          "name":"landType",
@@ -267,7 +267,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }, 
                         {
                          "name":"landType",
