@@ -5,7 +5,7 @@ export class Map extends Phaser.Scene {
         });
     }
     create(data) {
-        // width of a single isometric tile.
+        // width of a single isometric tile. The height of the tile would be half of this value.
         this.TILEWIDTH = 1024;
 
         // the offset that the tilemap is rendered at. Ensure this value is set to the correct value.
@@ -27,6 +27,7 @@ export class Map extends Phaser.Scene {
 
         this.initCamera();
 
+
         
 
         // currently selected tile. 
@@ -42,11 +43,15 @@ export class Map extends Phaser.Scene {
 
         // add the collision tiles
 
-        //this.layer1.setCollisionByProperty({collides: true});
-        this.layer1.setCollisionBetween(1, 16);
+        this.layer1.setCollisionByProperty({collides: true});
+        //this.layer1.setCollisionBetween(1, 16);
 
         // add the matter tile bodies
-        this.convertTilemapLayer(this.layer1);
+        //this.convertTilemapLayer(this.layer1);
+
+        
+        // convert the tiled object layer into matter polygons
+        this.createFromObjects(this.map, 'Object Layer 1');
     }
     initUI() {
         // get references to the GUI elements
@@ -72,6 +77,8 @@ export class Map extends Phaser.Scene {
         this.guiText[0].setText('input: (' + Math.round(this.input.x) + ', ' + Math.round(this.input.y) + ')');
         this.guiText[1].setText('input in world: (' + Math.round(pos.x) + ', ' + Math.round(pos.y) + ')');
         this.guiText[4].setText('zoom: ' + this.cameras.main.zoom);
+
+
     }
 
     update(time, delta) {
@@ -129,10 +136,17 @@ export class Map extends Phaser.Scene {
 
     // convert a tile's coordinates to the world coordinates.
     // the coordinate returned will be the CENTER of the isometric tile
-    worldXY(tileXY) {
+    tileXYtoworldXY(tileXY) {
         let xx = ((this.TILEWIDTH/2)*tileXY.x) - ((this.TILEWIDTH/2)*tileXY.y) + this.OFFSET_X;
         let yy = ((this.TILEWIDTH/4)*tileXY.x) + ((this.TILEWIDTH/4)*tileXY.y) + (this.TILEWIDTH/4) + this.OFFSET_Y;
 
+        return {x: xx, y: yy};
+    }
+
+    // convert iso coordinates to the world coordinates.
+    isoXYtoWorldXY(isoXY) {
+        let xx = isoXY.x - isoXY.y + this.OFFSET_X;
+        let yy = (0.5 * isoXY.x) + (0.5 * isoXY.y) + this.OFFSET_Y;
         return {x: xx, y: yy};
     }
 
@@ -142,10 +156,36 @@ export class Map extends Phaser.Scene {
         let tiles = tilemapLayer.getTilesWithin(0, 0, layerData.width, layerData.height, { isColliding: true });
 
         for (let i = 0; i < tiles.length; i++) {
-            let pt = this.worldXY({x: tiles[i].x, y: tiles[i].y});
+            let pt = this.tileXYtoworldXY({x: tiles[i].x, y: tiles[i].y});
             let poly = this.add.polygon(pt.x, pt.y, this.POINTS, undefined, 0);
             
             this.matter.add.gameObject(poly, {shape: { type: 'fromVerts', verts: this.POINTS, flagInternal: true }}).setStatic(true);
         } 
+    }
+
+    // create collision bodies for a given object layer
+    createFromObjects(map, objectLayerName) {
+        let objectLayer = map.getObjectLayer(objectLayerName);
+        let objects = objectLayer.objects;
+
+        for (let i = 0; i < objects.length; i++) {
+            let obj = objects[i];
+
+            // define the four corners of the rhom  bus
+            let p1 = this.isoXYtoWorldXY({x: obj.x, y: obj.y});
+            let p2 = this.isoXYtoWorldXY({x: obj.x + obj.width, y: obj.y});
+            let p3 = this.isoXYtoWorldXY({x: obj.x + obj.width, y: obj.y + obj.height});
+            let p4 = this.isoXYtoWorldXY({x: obj.x, y: obj.y + obj.height});
+
+            let pts = p1.x + ' ' + p1.y + ' ' + p2.x + ' ' + p2.y + ' ' + p3.x + ' ' + p3.y + ' ' + p4.x + ' ' + p4.y;
+            console.log(pts);
+
+            let avgX = (p1.x + p2.x + p3.x + p4.x) / 4;
+            let avgY = (p1.y + p2.y + p3.y + p4.y) / 4;
+            let poly = this.add.polygon(avgX, avgY, pts, undefined, 0);
+
+            this.matter.add.gameObject(poly, {shape: { type: 'fromVerts', verts: pts, flagInternal: true }}).setStatic(true);
+        }
+        
     }
 }
