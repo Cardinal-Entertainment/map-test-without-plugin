@@ -8,18 +8,11 @@ export class Load extends Phaser.Scene {
         // load all the sprites 
         this.load.image('sprLogoTop', 'https://zoombies.world/images/zoombies_logo_horizontal_glow.svg');
         this.load.image('sprLogo', 'https://zoombies.world/images/zoombies_coin.svg');
-        this.load.image('sprLogs', 'src/assets/sprites/bridgeLogs.png');
-        this.load.image('sprGrass', 'src/assets/sprites/grass.png');
-        this.load.image('sprStone', 'src/assets/sprites/stone.png');
-        this.load.image('sprCollisionTile', 'src/assets/sprites/collisionTile.png')
-
-        this.load.image('sampleTileset', 'src/assets/tilemaps/tileset.png');
-        this.load.tilemapTiledJSON('sampleTilemap', 'src/assets/tilemaps/map.json');
 
         this.load.atlas('atlasCrusader', 'src/assets/sprites/crusader.png', 'src/assets/sprites/crusader.json');
 		
-        this.load.image('tiles', 'src/assets/tilemaps/iso/waste_atlas-0.png');
-        this.load.tilemapTiledJSON('tilemap', 'src/assets/tilemaps/iso/waste_map.json')
+        this.load.image('tiles', 'src/assets/tilemaps/tileset.png');
+        this.load.tilemapTiledJSON('tilemap', 'src/assets/tilemaps/map.json');
         
         this.load.on("load", (file) => {console.log("Loaded " + file.src)});
 

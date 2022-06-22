@@ -5,16 +5,21 @@ export class Map extends Phaser.Scene {
         });
     }
     create(data) {
-        // width of a single isometric tile. The height of the tile would be half of this value.
-        this.TILEWIDTH = 1024;
+        // width of a single isometric tile.
+        this.TILEWIDTH = 892;
+
+        // height of a single isometric tile. This is the height of the tile in the isomap, not the spritesheet
+        this.TILEHEIGHT = 512;
 
         // the offset that the tilemap is rendered at. Ensure this value is set to the correct value.
-        this.OFFSET_X = 512;
-        this.OFFSET_Y = 512;
+        // For an isometric map, this is the world coordinate of the top corner
+        this.OFFSET_X = 446;
+        this.OFFSET_Y = 0;
 
         // points used for the rhombus collision body for tilemap collisions.
-        this.POINTS = '0 0 ' + (this.TILEWIDTH/2) + ' -' + (this.TILEWIDTH/4) + ' ' + this.TILEWIDTH + ' 0 ' + (this.TILEWIDTH/2) + ' ' + (this.TILEWIDTH/4);
+        this.POINTS = '0 0 ' + (this.TILEWIDTH/2) + ' -' + (this.TILEHEIGHT/2) + ' ' + this.TILEWIDTH + ' 0 ' + (this.TILEWIDTH/2) + ' ' + (this.TILEHEIGHT/2);
 
+        console.log('points = ' + this.POINTS);
         this.input.setPollAlways();
         this.cursors = this.input.keyboard.createCursorKeys();
 
@@ -23,10 +28,12 @@ export class Map extends Phaser.Scene {
 
         this.player = this.matter.add.sprite(0, 0, 'atlasCrusader', null);
         this.player.setBody({type:'circle',radius:43})
+
         this.player.walkSpeed = 10;
 
         this.initCamera();
-
+        console.log('function test');
+        console.log(this.tileXYtoworldXY({x: 0, y:0}));
 
         
 
@@ -38,12 +45,12 @@ export class Map extends Phaser.Scene {
     initMap() {
         // add the tilemap and layer
         this.map = this.add.tilemap('tilemap');
-        this.tileset = this.map.addTilesetImage('from_tp0', 'tiles');
+        this.tileset = this.map.addTilesetImage('tiles', 'tiles');
         this.layer1 = this.map.createLayer('Tile Layer 1', this.tileset);
 
         // add the collision tiles
 
-        this.layer1.setCollisionByProperty({collides: true});
+        //this.layer1.setCollisionByProperty({collides: true});
         //this.layer1.setCollisionBetween(1, 16);
 
         // add the matter tile bodies
@@ -77,34 +84,35 @@ export class Map extends Phaser.Scene {
         this.guiText[0].setText('input: (' + Math.round(this.input.x) + ', ' + Math.round(this.input.y) + ')');
         this.guiText[1].setText('input in world: (' + Math.round(pos.x) + ', ' + Math.round(pos.y) + ')');
         this.guiText[4].setText('zoom: ' + this.cameras.main.zoom);
-
-
     }
 
     update(time, delta) {
         this.showMousePos();
+
         this.player.setVelocity(0, 0);
 
+        let speedFactor = 0.001;
 
-        let sp = Math.sqrt(Math.pow(this.player.walkSpeed, 2) / 5);
+        let velocityX = this.TILEWIDTH * speedFactor * this.player.walkSpeed;
+        let velocityY = this.TILEHEIGHT * speedFactor * this.player.walkSpeed;
 
         // Horizontal movement
         if (this.cursors.left.isDown) {
-            this.player.setVelocity(-2 * sp, -sp);
+            this.player.setVelocity(-1 * velocityX, -1 * velocityY);
             this.player.anims.play('walk3', true);     
         }
         else if (this.cursors.right.isDown) {
-            this.player.setVelocity(2 * sp, sp);
+            this.player.setVelocity(velocityX, velocityY);
             this.player.anims.play('walk1', true);
         }
 
         // Vertical movement
         else if (this.cursors.up.isDown) {
-            this.player.setVelocity(2 * sp, -1 * sp);
+            this.player.setVelocity(velocityX, -1 * velocityY);
             this.player.anims.play('walk2', true);
         }
         else if (this.cursors.down.isDown) {
-            this.player.setVelocity(-2 * sp, sp);
+            this.player.setVelocity(-1 * velocityX, velocityY);
             this.player.anims.play('walk4', true);
         }
         else {
@@ -114,6 +122,8 @@ export class Map extends Phaser.Scene {
 
         this.checkInputForSelectedTile();
         //console.log(this.currentSelectedTile);
+
+        // prevent player from rotating when colliding with other matter bodies
         this.player.angle = 0;
     }
     checkInputForSelectedTile() {
@@ -138,14 +148,16 @@ export class Map extends Phaser.Scene {
     // the coordinate returned will be the CENTER of the isometric tile
     tileXYtoworldXY(tileXY) {
         let xx = ((this.TILEWIDTH/2)*tileXY.x) - ((this.TILEWIDTH/2)*tileXY.y) + this.OFFSET_X;
-        let yy = ((this.TILEWIDTH/4)*tileXY.x) + ((this.TILEWIDTH/4)*tileXY.y) + (this.TILEWIDTH/4) + this.OFFSET_Y;
+
+        // note: tileheight/2 is added to the y coordinate so that the center of the isometric tile is returned.
+        let yy = ((this.TILEHEIGHT/2)*tileXY.x) + ((this.TILEHEIGHT/2)*tileXY.y) + (this.TILEHEIGHT/2) + this.OFFSET_Y;
 
         return {x: xx, y: yy};
     }
 
     // convert iso coordinates to the world coordinates.
     isoXYtoWorldXY(isoXY) {
-        let xx = isoXY.x - isoXY.y + this.OFFSET_X;
+        let xx = (this.TILEWIDTH / (2*this.TILEHEIGHT)) * (isoXY.x - isoXY.y) + this.OFFSET_X;
         let yy = (0.5 * isoXY.x) + (0.5 * isoXY.y) + this.OFFSET_Y;
         return {x: xx, y: yy};
     }
@@ -170,6 +182,8 @@ export class Map extends Phaser.Scene {
 
         for (let i = 0; i < objects.length; i++) {
             let obj = objects[i];
+            console.log('obj');
+            console.log(obj);
 
             // define the four corners of the rhom  bus
             let p1 = this.isoXYtoWorldXY({x: obj.x, y: obj.y});
