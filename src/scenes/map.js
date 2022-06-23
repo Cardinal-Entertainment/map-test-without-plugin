@@ -5,6 +5,9 @@ export class Map extends Phaser.Scene {
         });
     }
     create(data) {
+        this.input.setPollAlways();
+        this.cursors = this.input.keyboard.createCursorKeys();
+
         // width of a single isometric tile.
         this.TILEWIDTH = 892;
 
@@ -20,8 +23,7 @@ export class Map extends Phaser.Scene {
         this.POINTS = '0 0 ' + (this.TILEWIDTH/2) + ' -' + (this.TILEHEIGHT/2) + ' ' + this.TILEWIDTH + ' 0 ' + (this.TILEWIDTH/2) + ' ' + (this.TILEHEIGHT/2);
 
         console.log('points = ' + this.POINTS);
-        this.input.setPollAlways();
-        this.cursors = this.input.keyboard.createCursorKeys();
+        
 
         this.initMap();
         this.initUI();
@@ -32,8 +34,6 @@ export class Map extends Phaser.Scene {
         this.player.walkSpeed = 10;
 
         this.initCamera();
-        console.log('function test');
-        console.log(this.tileXYtoworldXY({x: 0, y:0}));
 
         
 
@@ -48,15 +48,16 @@ export class Map extends Phaser.Scene {
         this.tileset = this.map.addTilesetImage('tiles', 'tiles');
         this.layer1 = this.map.createLayer('Tile Layer 1', this.tileset);
 
-        // add the collision tiles
-
-        //this.layer1.setCollisionByProperty({collides: true});
-        //this.layer1.setCollisionBetween(1, 16);
+        // Option 1 for tilemap collision: Set collision on entire tiles
+        
+        //this.layer1.setCollisionByProperty({collides: true}); // set collision on tiles with the property collides = true
+        //this.layer1.setCollisionBetween(1, 16); // set collision on tiles in a given id range
 
         // add the matter tile bodies
         //this.convertTilemapLayer(this.layer1);
 
-        
+        // Option 2 for tilemap collision: Create an object layer in tiled and generate collision polygons of any size
+
         // convert the tiled object layer into matter polygons
         this.createFromObjects(this.map, 'Object Layer 1');
     }
@@ -88,7 +89,7 @@ export class Map extends Phaser.Scene {
 
     update(time, delta) {
         this.showMousePos();
-
+        this.checkInputForSelectedTile();
         this.player.setVelocity(0, 0);
 
         let speedFactor = 0.001;
@@ -120,7 +121,7 @@ export class Map extends Phaser.Scene {
             this.player.anims.stop();
         }
 
-        this.checkInputForSelectedTile();
+        
         //console.log(this.currentSelectedTile);
 
         // prevent player from rotating when colliding with other matter bodies
@@ -135,17 +136,19 @@ export class Map extends Phaser.Scene {
 
         // poll input for selected tile
         let pos = this.cameras.main.getWorldPoint(this.input.x, this.input.y);
-        pos.x -= this.inputOffsetX;
-        pos.y -= this.inputOffsetY;
+        pos.x -= this.OFFSET_X;
+        pos.y -= this.OFFSET_Y;
         let tile = this.layer1.getTileAtWorldXY(pos.x, pos.y);
         if (tile !== null) {
             this.currentSelectedTile = tile;
             this.currentSelectedTile.tint = (0x86bfda);
+            // console.log(this.currentSelectedTile);
         }
     }
 
     // convert a tile's coordinates to the world coordinates.
     // the coordinate returned will be the CENTER of the isometric tile
+    // used in convertTilemapLayer.
     tileXYtoworldXY(tileXY) {
         let xx = ((this.TILEWIDTH/2)*tileXY.x) - ((this.TILEWIDTH/2)*tileXY.y) + this.OFFSET_X;
 
@@ -156,6 +159,7 @@ export class Map extends Phaser.Scene {
     }
 
     // convert iso coordinates to the world coordinates.
+    // used in createfromObjects.
     isoXYtoWorldXY(isoXY) {
         let xx = (this.TILEWIDTH / (2*this.TILEHEIGHT)) * (isoXY.x - isoXY.y) + this.OFFSET_X;
         let yy = (0.5 * isoXY.x) + (0.5 * isoXY.y) + this.OFFSET_Y;
@@ -182,8 +186,6 @@ export class Map extends Phaser.Scene {
 
         for (let i = 0; i < objects.length; i++) {
             let obj = objects[i];
-            console.log('obj');
-            console.log(obj);
 
             // define the four corners of the rhom  bus
             let p1 = this.isoXYtoWorldXY({x: obj.x, y: obj.y});
@@ -192,7 +194,6 @@ export class Map extends Phaser.Scene {
             let p4 = this.isoXYtoWorldXY({x: obj.x, y: obj.y + obj.height});
 
             let pts = p1.x + ' ' + p1.y + ' ' + p2.x + ' ' + p2.y + ' ' + p3.x + ' ' + p3.y + ' ' + p4.x + ' ' + p4.y;
-            console.log(pts);
 
             let avgX = (p1.x + p2.x + p3.x + p4.x) / 4;
             let avgY = (p1.y + p2.y + p3.y + p4.y) / 4;
