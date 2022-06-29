@@ -3,8 +3,6 @@ import detectEthereumProvider from '@metamask/detect-provider'
 
 import zoombies_market_place_json from '../contracts/ZoombiesMarketPlace.json'
 import zoom_token_json from '../contracts/ZoomToken.json'
-import wrapped_movr_json from '../contracts/WrappedMovr.json'
-import anyERC20JSON from '../contracts/AnyERC20.json'
 import { DAPP_STATES } from 'store/store'
 import Actions from 'store/actions'
 
@@ -15,10 +13,7 @@ import {
   QUERY_KEYS,
 } from '../constants'
 import {
-  getWalletUSDTBalance,
   getWalletZoomBalance,
-  getWalletDAIBalance,
-  getWalletUSDCBalance,
 } from '../utils/wallet'
 import watchMarketEvents from 'utils/setupWatcher'
 import WebsocketProvider from 'utils/WebsocketProvider'
