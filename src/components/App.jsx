@@ -4,20 +4,20 @@ import { setupEthers } from '../hooks/useBlockchain'
 import { getNetworkNameFromURL } from '../utils/networkUtil'
 import { useQueryClient } from 'react-query'
 
+function App() {
 
-
-
-
-
-export default class App extends React.Component {
- render() {
-/*
     const { state, dispatch } = useContext(store)
+    console.log(store);
+    console.log(state);
+    /*
     const {
-      wallet: { address, balance, zoomBalance, daiBalance },
+      wallet: { address, balance, zoomBalance },
       contracts,
     } = state
-    
+
+    console.log(store);
+/*
+        
     const onConnect = async (dispatch, networkName, queryClient) => {
         await setupEthers(dispatch, queryClient, networkName)
     }
@@ -30,4 +30,5 @@ export default class App extends React.Component {
    </div>
   );
  }
-}
+
+ export default App;
