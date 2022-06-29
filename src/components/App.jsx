@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { store } from 'store/store'
+import { store } from '../store/store'
 import { setupEthers } from '../hooks/useBlockchain'
 import { getNetworkNameFromURL } from '../utils/networkUtil'
 import { useQueryClient } from 'react-query'

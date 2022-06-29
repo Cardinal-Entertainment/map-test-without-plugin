@@ -55,13 +55,7 @@ export const NFT_CONTRACTS = {
       address: '0x3E7997B8D30AA6216102fb2e9206246e478d57d3',
       icon: zoombiesLogo,
       abiJSON: zoombiesContractJSON,
-    },
-    {
-      name: 'NextGem',
-      address: '0x4c0EaC154AE7cB755b260E835895e9F471B640f3',
-      icon: nextGemLogo,
-      abiJSON: anyNFTJson,
-    },
+    }
   ],
   moonriver: [
     {
@@ -69,13 +63,7 @@ export const NFT_CONTRACTS = {
       address: '0x08716e418e68564C96b68192E985762740728018',
       icon: zoombiesLogo,
       abiJSON: zoombiesContractJSON,
-    },
-    {
-      name: 'NextGem',
-      address: '0x4c0EaC154AE7cB755b260E835895e9F471B640f3',
-      icon: nextGemLogo,
-      abiJSON: anyNFTJson,
-    },
+    }
   ],
 }
 
@@ -136,11 +124,7 @@ export const NETWORK_ICONS = {
 }
 
 export const CURRENCY_ICONS = {
-  MOVR: movrLogo,
-  DAI: daiLogo,
-  USDT: usdtLogo,
   ZOOM: zoomCoin,
-  USDC: usdcCoin,
 }
 
 export const CURRENCY_TYPES = {

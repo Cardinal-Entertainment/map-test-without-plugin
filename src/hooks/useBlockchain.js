@@ -3,8 +3,8 @@ import detectEthereumProvider from '@metamask/detect-provider'
 
 import zoombies_market_place_json from '../contracts/ZoombiesMarketPlace.json'
 import zoom_token_json from '../contracts/ZoomToken.json'
-import { DAPP_STATES } from 'store/store'
-import Actions from 'store/actions'
+import { DAPP_STATES } from '../store/store'
+import Actions from '../store/actions'
 
 import {
   NFT_CONTRACTS,
@@ -15,8 +15,8 @@ import {
 import {
   getWalletZoomBalance,
 } from '../utils/wallet'
-import watchMarketEvents from 'utils/setupWatcher'
-import WebsocketProvider from 'utils/WebsocketProvider'
+import watchMarketEvents from '../utils/setupWatcher'
+import WebsocketProvider from '../utils/WebsocketProvider'
 
 const loadContracts = async (
   signer,

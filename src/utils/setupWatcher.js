@@ -71,7 +71,7 @@ async function itemListedCallback(
     return tokenId.toNumber()
   })
 
-  const readOnlyContract = nftContracts[args.nftToken]?.readOnly
+  const readOnlyContract = true//= nftContracts[args.nftToken]?.readOnly
 
   if (!readOnlyContract) return
 
