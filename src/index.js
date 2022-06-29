@@ -4,7 +4,7 @@ import { Map } from "./scenes/map.js";
 import { UI } from "./scenes/ui.js";
 
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from 'react-dom/client';
 import App from "./components/App.jsx";
 
 
@@ -34,4 +34,6 @@ var config = {
 // instantiate the Phaser Game object
 let game = new Phaser.Game(config);
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const container = document.getElementById('app');
+const root = createRoot(container); // createRoot(container!) if you use TypeScript
+root.render(<App tab="home" />);
